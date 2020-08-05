@@ -1,7 +1,5 @@
 package com.application;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,8 +17,8 @@ public class TicketOffice {
         return tickets.remove(0);
     }
 
-    public void minusAmount(Long amount) {
-        this.amount -= amount;
+    public void sellTicketTo(Audience audience) {
+        plusAmount(audience.buy(getTicket()));
     }
 
     public void plusAmount(Long amount) {
