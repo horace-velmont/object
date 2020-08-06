@@ -1,4 +1,4 @@
-package com.application;
+package com.application.theater;
 
 public class Theater {
     private TicketSeller ticketSeller;
