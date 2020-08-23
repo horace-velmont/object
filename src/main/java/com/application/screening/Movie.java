@@ -1,10 +1,13 @@
 package com.application.screening;
 
+import lombok.Getter;
+
 import java.time.Duration;
 
 public class Movie {
     private String title;
     private Duration runningTime;
+    @Getter
     private Money fee;
     private DiscountPolicy discountPolicy;
 
@@ -13,5 +16,9 @@ public class Movie {
         this.runningTime = runningTime;
         this.fee = fee;
         this.discountPolicy = discountPolicy;
+    }
+
+    public Money calculateMovieFee(Screening screening) {
+        return fee.minus(discountPolicy.calculateDiscountAmount(screening));
     }
 }
