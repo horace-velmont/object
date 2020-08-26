@@ -1,4 +1,5 @@
 package com.application.screening;
 
-public class DiscountCondition {
+public interface DiscountCondition {
+    boolean isSatisfiedBy(Screening screening);
 }
