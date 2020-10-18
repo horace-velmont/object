@@ -1,4 +1,8 @@
-package com.application.screening;
+package com.application.screening.discountPolicy;
+
+import com.application.screening.DiscountCondition;
+import com.application.screening.Money;
+import com.application.screening.Screening;
 
 public class AmountDiscountPolicy extends DiscountPolicy {
     private Money discountAmount;

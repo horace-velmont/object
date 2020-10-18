@@ -1,5 +1,6 @@
 package com.application.screening;
 
+import com.application.screening.discountPolicy.DiscountPolicy;
 import lombok.Getter;
 
 import java.time.Duration;
