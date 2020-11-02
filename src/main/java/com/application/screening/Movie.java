@@ -2,6 +2,7 @@ package com.application.screening;
 
 import com.application.screening.discountPolicy.DiscountPolicy;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Duration;
 
@@ -10,6 +11,7 @@ public class Movie {
     private Duration runningTime;
     @Getter
     private Money fee;
+    @Setter
     private DiscountPolicy discountPolicy;
 
     public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
