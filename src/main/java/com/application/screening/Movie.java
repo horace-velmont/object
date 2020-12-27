@@ -1,30 +1,40 @@
 package com.application.screening;
 
-import com.application.screening.discountPolicy.DiscountPolicy;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.Duration;
+import java.util.List;
 
+@Data
 public class Movie {
-    private String title;
-    private Duration runningTime;
-    @Getter
-    private Money fee;
-    @Setter
-    private DiscountPolicy discountPolicy;
+  private String title;
+  private Duration runningTime;
+  private Money fee;
+  private List<DiscountCondition> discountConditions;
 
-    public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
-        this.title = title;
-        this.runningTime = runningTime;
-        this.fee = fee;
-        this.discountPolicy = discountPolicy;
+  private MovieType movieType;
+  private Money discountAmount;
+  private double discountPercent;
+
+  public Money calculateAmountDiscountedFee() {
+    if (movieType != MovieType.AMOUNT_DISCOUNT) {
+      throw new IllegalArgumentException();
+    }
+    return fee.minus(discountAmount);
+  }
+
+  public Money calculatePercentDiscountFee() {
+    if (movieType != MovieType.PERCENT_DISCOUNT) {
+      throw new IllegalArgumentException();
     }
 
-    public Money calculateMovieFee(Screening screening) {
-        if (discountPolicy == null) {
-            return fee;
-        }
-        return fee.minus(discountPolicy.calculateDiscountAmount(screening));
+    return fee.minus(fee.times(discountPercent));
+  }
+
+  public Money calculateNondDiscountedFee() {
+    if (movieType != MovieType.NONE_DISCOUNT) {
+      throw new IllegalArgumentException();
     }
+    return fee;
+  }
 }

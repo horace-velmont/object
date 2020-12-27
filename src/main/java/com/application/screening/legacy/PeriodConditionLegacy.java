@@ -1,14 +1,16 @@
-package com.application.screening;
+package com.application.screening.legacy;
+
+import com.application.screening.Screening;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
-public class PeriodCondition implements DiscountCondition {
+public class PeriodConditionLegacy implements DiscountConditionLegacy {
     private DayOfWeek dayOfWeek;
     private LocalTime startTime;
     private LocalTime endTime;
 
-    PeriodCondition(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
+    PeriodConditionLegacy(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;
